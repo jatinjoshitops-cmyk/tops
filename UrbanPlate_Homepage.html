@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UrbanPlate - Homestyle Food, Delivered Fast</title>
+<style>
+  :root {
+    --bg: #FAF7F1;
+    --surface: #FFFFFF;
+    --text: #1F2A24;
+    --text-muted: #5B6B62;
+    --primary: #2F6F4E;
+    --primary-dark: #1F4E37;
+    --accent: #E8A33D;
+    --accent-soft: #FBEBD0;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    margin: 0 0 0.4em 0;
+    color: var(--primary-dark);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* Header / Nav */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid #E7E1D6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6%;
+  }
+
+  .brand {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--primary-dark);
+    letter-spacing: 0.5px;
+  }
+  .brand span { color: var(--accent); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 34px;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 4px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  nav a:hover, nav a:focus {
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+  }
+
+  /* Hero / Home section */
+  #home {
+    padding: 90px 6% 100px 6%;
+    text-align: center;
+    background: linear-gradient(180deg, var(--accent-soft) 0%, var(--bg) 100%);
+  }
+
+  #home h1 {
+    font-size: 2.9rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #home p.subtext {
+    max-width: 520px;
+    margin: 18px auto 34px auto;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    padding: 14px 34px;
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(47, 111, 78, 0.25);
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .cta-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+  section {
+    padding: 80px 6%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .section-heading h2 { font-size: 2.1rem; }
+  .section-heading p { color: var(--text-muted); }
+
+  /* Menu / dishes */
+  .dish-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+  }
+
+  .dish-card {
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(31, 42, 36, 0.08);
+  }
+
+  .dish-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .dish-info { padding: 20px 22px 26px 22px; }
+  .dish-info h3 { font-size: 1.25rem; margin-bottom: 8px; }
+  .dish-info p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+
+  /* Contact section */
+  #contact { background: var(--accent-soft); border-radius: 24px; }
+
+  .contact-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .contact-intro { flex: 1 1 280px; max-width: 380px; }
+  .contact-intro p { color: var(--text-muted); }
+
+  form {
+    flex: 1 1 380px;
+    max-width: 460px;
+    background: var(--surface);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(31, 42, 36, 0.08);
+  }
+
+  .form-group { margin-bottom: 18px; }
+
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 11px 13px;
+    border: 1px solid #D8D0C0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  textarea { resize: vertical; min-height: 100px; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 13px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .submit-btn:hover { background: var(--primary-dark); }
+
+  .form-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--primary-dark);
+    color: #EDF3EF;
+    padding: 46px 6% 30px 6%;
+    text-align: center;
+  }
+
+  footer .footer-brand {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  footer p { margin: 4px 0; color: #C9D6CD; font-size: 0.92rem; }
+
+  footer .copyright {
+    margin-top: 24px;
+    font-size: 0.8rem;
+    color: #94A79C;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 18px;
+  }
+
+  @media (max-width: 800px) {
+    header { flex-direction: column; gap: 12px; }
+    nav ul { gap: 20px; }
+    .dish-grid { grid-template-columns: 1fr; }
+    #home h1 { font-size: 2.1rem; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">Urban<span>Plate</span></div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home">
+    <h1>Homestyle food, delivered fast.</h1>
+    <p class="subtext">UrbanPlate connects you with the best home-style kitchens in your city, so a fresh, hot meal is always just a few taps away.</p>
+    <a href="#menu" class="cta-btn">See Today's Menu</a>
+  </section>
+
+  <section id="menu">
+    <div class="section-heading">
+      <h2>Our Most-Loved Dishes</h2>
+      <p>A few favourites our customers keep coming back for.</p>
+    </div>
+    <div class="dish-grid">
+      <div class="dish-card">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgMjIwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIyMCI+CiAgPHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9IiNGQkVCRDAiLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNTAsMjApIj4KICAgIDxwYXRoIGQ9Ik0wIDAgTC05NSAxOTAgQSAxMDUgMTA1IDAgMCAwIDk1IDE5MCBaIiBmaWxsPSIjRjBCOTREIiBzdHJva2U9IiMxRjJBMjQiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTAgMjIgTC03OCAxNzggQSA4OCA4OCAwIDAgMCA3OCAxNzggWiIgZmlsbD0iI0Y3RDc3RSIvPgogICAgPHBhdGggZD0iTS03OCAxNzggQSA4OCA4OCAwIDAgMCA3OCAxNzggWiIgZmlsbD0iI0U4QTMzRCIvPgogICAgPGNpcmNsZSBjeD0iLTMwIiBjeT0iOTAiIHI9IjE0IiBmaWxsPSIjQzAzOTJCIi8+CiAgICA8Y2lyY2xlIGN4PSIyMCIgY3k9IjcwIiByPSIxNCIgZmlsbD0iI0MwMzkyQiIvPgogICAgPGNpcmNsZSBjeD0iMCIgY3k9IjE0MCIgcj0iMTQiIGZpbGw9IiNDMDM5MkIiLz4KICAgIDxjaXJjbGUgY3g9Ii00NSIgY3k9IjE1MCIgcj0iMTAiIGZpbGw9IiMyRjZGNEUiLz4KICAgIDxjaXJjbGUgY3g9IjQyIiBjeT0iMTMwIiByPSIxMCIgZmlsbD0iIzJGNkY0RSIvPgogICAgPGNpcmNsZSBjeD0iMTAiIGN5PSIxMDAiIHI9IjkiIGZpbGw9IiMyRjZGNEUiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="Margherita Pizza">
+        <div class="dish-info">
+          <h3>Margherita Pizza</h3>
+          <p>A classic wood-fired base topped with fresh basil, mozzarella and a rich tomato sauce.</p>
+        </div>
+      </div>
+      <div class="dish-card">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgMjIwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIyMCI+CiAgPHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9IiNGQkVCRDAiLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MCw0MCkiPgogICAgPHBhdGggZD0iTTEwIDYwIFExMDAgLTEwIDE5MCA2MCBMMTkwIDc4IEwxMCA3OCBaIiBmaWxsPSIjRThBMzNEIiBzdHJva2U9IiMxRjJBMjQiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPGNpcmNsZSBjeD0iNTUiIGN5PSIzNSIgcj0iNCIgZmlsbD0iI0ZBRjdGMSIvPgogICAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMjAiIHI9IjQiIGZpbGw9IiNGQUY3RjEiLz4KICAgIDxjaXJjbGUgY3g9IjE0NSIgY3k9IjM1IiByPSI0IiBmaWxsPSIjRkFGN0YxIi8+CiAgICA8cmVjdCB4PSIxMCIgeT0iNzgiIHdpZHRoPSIxODAiIGhlaWdodD0iMTQiIGZpbGw9IiM3RkE4NzUiIHN0cm9rZT0iIzFGMkEyNCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICA8cmVjdCB4PSIxMCIgeT0iOTIiIHdpZHRoPSIxODAiIGhlaWdodD0iMjYiIGZpbGw9IiM4QzVBMzQiIHN0cm9rZT0iIzFGMkEyNCIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgICA8cmVjdCB4PSIxMCIgeT0iMTE4IiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjEyIiBmaWxsPSIjRjJDODZEIiBzdHJva2U9IiMxRjJBMjQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPHJlY3QgeD0iMTAiIHk9IjEzMCIgd2lkdGg9IjE4MCIgaGVpZ2h0PSIxNCIgZmlsbD0iI0MwMzkyQiIgc3Ryb2tlPSIjMUYyQTI0IiBzdHJva2Utd2lkdGg9IjMiLz4KICAgIDxwYXRoIGQ9Ik0xMCAxNDQgUTEwMCAxODAgMTkwIDE0NCBMMTkwIDE1OCBRMTAwIDE5NCAxMCAxNTggWiIgZmlsbD0iI0YwQjk0RCIgc3Ryb2tlPSIjMUYyQTI0IiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="Classic Cheese Burger">
+        <div class="dish-info">
+          <h3>Classic Cheese Burger</h3>
+          <p>A juicy grilled patty layered with melted cheese, crisp lettuce and our house-special sauce.</p>
+        </div>
+      </div>
+      <div class="dish-card">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMDAgMjIwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIyMCI+CiAgPHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMjAiIGZpbGw9IiNGQkVCRDAiLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNTAsNDApIj4KICAgIDxwYXRoIGQ9Ik0tMTA1IDYwIFEtMTA1IDE0MCAwIDE0MCBRMTA1IDE0MCAxMDUgNjAgWiIgZmlsbD0iIzJGNkY0RSIgc3Ryb2tlPSIjMUYyQTI0IiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDxlbGxpcHNlIGN4PSIwIiBjeT0iNjAiIHJ4PSIxMDUiIHJ5PSIyNiIgZmlsbD0iI0Y3RDc3RSIgc3Ryb2tlPSIjMUYyQTI0IiBzdHJva2Utd2lkdGg9IjQiLz4KICAgIDxnIGZpbGw9IiNFOEEzM0QiPgogICAgICA8Y2lyY2xlIGN4PSItNTUiIGN5PSI1NSIgcj0iNSIvPgogICAgICA8Y2lyY2xlIGN4PSItMzAiIGN5PSI2NSIgcj0iNSIvPgogICAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iNTAiIHI9IjUiLz4KICAgICAgPGNpcmNsZSBjeD0iMzAiIGN5PSI2MyIgcj0iNSIvPgogICAgICA8Y2lyY2xlIGN4PSI1NSIgY3k9IjUzIiByPSI1Ii8+CiAgICAgIDxjaXJjbGUgY3g9Ii0xNSIgY3k9IjcwIiByPSI1Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjE4IiBjeT0iNzIiIHI9IjUiLz4KICAgIDwvZz4KICAgIDxjaXJjbGUgY3g9Ii0yNSIgY3k9IjUyIiByPSI4IiBmaWxsPSIjQzAzOTJCIi8+CiAgICA8Y2lyY2xlIGN4PSIzNSIgY3k9IjQ1IiByPSI4IiBmaWxsPSIjQzAzOTJCIi8+CiAgICA8cGF0aCBkPSJNLTEwIDMwIFEtMTAgNSA1IDUiIHN0cm9rZT0iIzdGQTg3NSIgc3Ryb2tlLXdpZHRoPSI2IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxwYXRoIGQ9Ik0xNSAzMiBRMjAgMTAgMzUgOCIgc3Ryb2tlPSIjN0ZBODc1IiBzdHJva2Utd2lkdGg9IjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDwvZz4KPC9zdmc+Cg==" alt="Hyderabadi Biryani">
+        <div class="dish-info">
+          <h3>Hyderabadi Biryani</h3>
+          <p>Fragrant basmati rice slow-cooked with tender spiced meat, saffron and fried onions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-wrap">
+      <div class="contact-intro">
+        <h2>Get in Touch</h2>
+        <p>Have a question about an order, a partnership idea, or just want to say hi? Send us a message and our team will get back to you.</p>
+      </div>
+      <form onsubmit="return false;">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Type your message here..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit</button>
+        <p class="form-note">This is a demo form for a college assignment - it does not send any real data.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-brand">UrbanPlate</div>
+    <p>123 MG Road, Pune, Maharashtra 411001</p>
+    <p>Phone: +91 98765 43210 &nbsp;|&nbsp; Email: hello@urbanplate.example</p>
+    <div class="copyright">&copy; 2026 UrbanPlate. All rights reserved. (Fictional brand created for a college assignment.)</div>
+  </footer>
+
+</body>
+</html>
